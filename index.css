@@ -1,0 +1,226 @@
+body {
+	background-image: url("OldWestPaper.jpg");
+	background-size: cover;
+	text-align: center;
+	font-family: 'Rye';
+}
+
+#Title {
+	font-size: 5rem;
+	font-weight: 2;
+	margin: 0;
+}
+
+#gallows {
+	display: grid;
+    grid-template-columns: repeat(20, 2fr);
+    grid-template-rows: repeat(10, 20px);
+    /*border: 1px solid red;*/
+}
+
+#collections-title {
+	font-size: 35px;
+	transition: 0.5s linear;
+}
+
+.change-collections-title-color {
+	color: red;
+}
+
+.collection-group {
+	display: inline-block;
+}
+
+.collections {
+	display: inline-block;
+	margin: 0px 10px;
+}
+
+#geography-collection-box {
+	border: 2px solid purple;
+	/*height: 0px;*/
+}
+
+.geography-collection {
+	border: 2px solid green;
+	height: 0px;
+	color: black;
+	transition: 0.5s linear;
+	/*overflow: hidden;*/
+}
+
+/*.display {
+	height: 20px;
+}*/
+
+.gallow-stand {
+	/*border: 1px solid gold;*/
+}
+
+#gallow-pole {
+	border-right: 2px solid black;
+	grid-column: 8;
+	grid-row: 2/10;
+}
+
+#gallow-mast {
+	border-bottom: 2px solid black;
+	grid-column: 9/11;
+	grid-row: 1;
+}
+
+#gallow-rope {
+	border-left: 2px solid black;
+	grid-column: 11;
+	grid-row: 2/3;
+}
+
+#prisonerDiv {
+	/*border: 2px solid blue;*/
+	grid-column: 10/12;
+	grid-row: 3/10;
+	display: grid;
+	grid-template-columns: repeat(10, 2fr);
+    grid-template-rows: repeat(20, 1fr);
+}
+
+.prisoner {
+	/*border: 2px solid black;*/
+}
+
+#head {
+	border: 2px solid black;
+	grid-column: 5/7;
+	grid-row: 1/4;
+	border-radius: 50px;
+}
+
+#torso {
+	border-right: 2px solid black;
+	grid-column: 5;
+	grid-row: 4/15;
+}
+
+#left-arm {
+	border-bottom: 2px solid black;
+	grid-column: 3/6;
+	grid-row: 5;
+}
+
+#right-arm {
+	border-bottom: 2px solid black;
+	grid-column: 6/9;
+	grid-row: 5;
+}
+
+#left-leg {
+	border-bottom: 2px solid black;
+	grid-column: 3/6;
+	grid-row: 14;
+}
+
+#right-leg {
+	border-bottom: 2px solid black;
+	grid-column: 6/9;
+	grid-row: 14;
+}
+
+#guessed-letter-container {
+	grid-column: 14/20;\
+	/*display: flex;*/
+	/*border: 2px solid green;*/
+}
+
+#guesses {
+	font-size: 35px;
+}
+
+.guessBox {
+	text-transform: uppercase;
+	display: inline-block;
+	/*border: 1px solid blue;*/
+	font-size: 40px;
+	margin: 10px;
+}
+
+.goodguess {
+	color: green;
+}
+
+.badguess {
+	color: red;
+}
+
+#putBefore {
+	font-size: 10px;
+	color: transparent;
+}
+
+.wordBox {
+	display: inline-block;
+	/*border: 2px solid green;*/
+	margin: 0px 20px;
+}
+
+
+.letterBox {
+	/*border: 1px solid blue;*/
+	/*text-decoration: underline;
+	text-decoration-color: black;*/
+	border-bottom: 5px solid black;
+	width: 30px;
+	display: inline-block;
+	padding: 0px 5px;
+	margin: 5px;
+	font-size: 50px;
+	line-height: 45px;
+	color: transparent;
+	font-family: Rye;
+	text-transform: uppercase;
+	transition: 1s ease;
+}
+
+.letterBox:hover {
+	line-height: 90px;
+}
+
+#GuessWrapper {
+	margin-top: 10px;
+	color: transparent;
+	/*display: none;*/
+}
+
+#GuessInput {
+	/*color: green;*/
+	font-size: 25px;
+	width: 25px;
+	text-transform: uppercase;
+	/*height: 50px;*/
+}
+
+.black {
+	color: black;
+}
+
+#winLose {
+	color: transparent;
+}
+
+.lose {
+	color: black;
+}
+
+.show-lost-letter {
+	color: red;
+}
+
+
+#win {
+	color: transparent;
+}
+
+
+
+
+
+

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="./node_modules/random-words/index.js"></script>
+	<script src="./node_modules/jquery/dist/jquery.js"></script>
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<link href="https://fonts.googleapis.com/css?family=Rye&display=swap" rel="stylesheet">
+	<title>HANGMAN</title>
+</head>
+<body>
+	<h1 id="Title">HANGMAN</h1>
+	<div id="winLose">
+		<div id="lose">You Lose</div>
+		<div id="win">ПОБЕДА</div>
+	</div>
+	<button onclick="loadNewGame(collectionState)">New Game</button>
+	<br>
+	<div id="collections-container">
+		<div id="collections-title" onclick="changeColor()">Collections:</div>
+		<div id="collection-group-box">
+			<div class="collections collection-group" id="random-words" onclick="loadNewGame(wordList)">Random</div>
+			<div class="collection-group" onclick="showCollections(geography)">Geography</div>
+		</div>
+		
+		<div id="geography-collection-box">
+			<div class="collections geography-collection display" id="state-capitals" onclick="loadNewGame(stateCapitals)" >State Capitals</div>
+		<div class="collections geography-collection display" id="state-capitals" onclick="loadNewGame(stateMottos)" >State Mottos</div>
+		</div>
+	</div>
+
+<!-- 	<div>Name: <input type="text" name="name" id="namefield"></div>
+	<div>Email: <input type="text" name="name" id="emailfield"></div>
+	<div><input id="SubmitButton" type="submit" value="submit" onclick="onSubmitRegister()" ></div> -->
+	<div id="gallows">
+		<div class="gallow-stand" id="gallow-pole"></div>
+		<div class="gallow-stand" id="gallow-mast"></div>
+		<div class="gallow-stand" id="gallow-rope"></div>
+		<div id="prisonerDiv">
+			<div class="prisoner" id="head"></div>
+<!-- 			<div class="prisoner" id="torso"></div>
+			<div class="prisoner" id="left-arm"></div>
+			<div class="prisoner" id="right-arm"></div>
+			<div class="prisoner" id="left-leg"></div>
+			<div class="prisoner" id="right-leg"></div> -->
+		</div>
+		<div id="guessed-letter-container">
+			<div id="guesses">Guesses:</div>
+			<div id="putBefore">-- keep on guessing --</div>
+		</div>
+	</div>
+	
+	<div id="GuessWrapper">
+			<input id="GuessInput" type="text" name="LetterGuess" autocomplete="off"> <!-- onkeyup="this.value = this.value.toUpperCase();" --><!-- onkeyup="checkGuess()" -->
+			<input id="SubmitButton" type="submit" value="submit" onclick="checkGuess()" >
+	</div>
+
+
+	<script type="text/javascript" src="index.js"></script>
+</body>
+</html>
+
+
+<!-- 	First name:
+	<input type="text" id="firstname">
+	<br>
+	<p>Your first name is: <b id='boldStuff2'></b> 
+	</p>
+	<p>Other people's names:</p>
+	<ol id="demo"></ol>
+	<input type='button' onclick='changeText2()' value='Submit' /> -->
