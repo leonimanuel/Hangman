@@ -1,3 +1,37 @@
+let allTopics = {
+	geography: {
+		stateCapitals: [
+			"Montgomery", 
+			"Juneau", 
+			"Pheonix", 
+			"Sacramento", 
+			"Denver", 
+			"Tallahassee", 
+			"Atlanta", 
+			"Springfield", 
+			"Honolulu", 
+			"Topeka", 
+			], 
+		 stateMottos: [
+			"the people rule", 
+			"let it be perpetual", 
+			"by valor and arms", 
+			]
+	},  
+	animals: {
+		birds: [
+			"nightnigale", 
+			"robin", 
+			"bluejay"
+			], 
+		fish: [
+			"salmon", 
+			"trout", 
+			"tuna", 
+			]
+	}
+}
+
 
 let myArray = [
 	"banana", 
@@ -46,6 +80,21 @@ let fish = [
 	"trout", 
 	"tuna", ]
 
+
+
+// let topicArray = Object.keys(allTopics)
+// let randomizedTopic = topicArray[Math.floor(Math.random()*topicArray.length)]
+
+// let collectionArray = Object.keys(allTopics[randomizedTopic])
+// let randomizedCollection = collectionArray[Math.floor(Math.random()*collectionArray.length)]
+
+// let randomizedPhrase = allTopics[randomizedTopic][randomizedCollection]
+// 	[Math.floor(Math.random()*allTopics[randomizedTopic][randomizedCollection].length)]
+
+// let random = randomizedPhrase
+// console.log(random[Math.floor(Math.random()*random.length)])
+
+
 let collectionState = wordList
 let q = 0
 
@@ -53,15 +102,31 @@ function changeCollectionState(collection) {
 	collectionState = collection
 }
 
-
 function loadNewGame (collection) {
 	badGuesses = 0
 	collectionState = collection
-	// collectionState = stateMottos
-	let randomPhrase = collectionState[Math.floor(Math.random()*collection.length)];
+	console.log(collectionState)
+
+	let randomPhrase
+	if (collectionState === allTopics) {
+		let topicArray = Object.keys(allTopics)
+		let randomizedTopic = topicArray[Math.floor(Math.random()*topicArray.length)]
+
+		let collectionArray = Object.keys(allTopics[randomizedTopic])
+		let randomizedCollection = collectionArray[Math.floor(Math.random()*collectionArray.length)]
+
+		let randomizedPhrase = allTopics[randomizedTopic][randomizedCollection]
+			[Math.floor(Math.random()*allTopics[randomizedTopic][randomizedCollection].length)]
+			console.log(randomizedPhrase)
+		randomPhrase = randomizedPhrase
+	} else {
+		randomPhrase = collectionState[Math.floor(Math.random()*collectionState.length)];
+	}
+	
+	
 
 	eachWordArray = randomPhrase.split(' ');
-	// console.log(eachWordArray)
+	console.log("eachWordArray: " + eachWordArray)
 
 	let eachLetterArray = [];
 	
@@ -152,18 +217,19 @@ function checkGuess() {
 		for (let i = 0; i < guesses; i++) {
 			console.log("guessed letters: " + guessedLetters)
 			if (input.value === guessedLetters[i]) {
-				console.log("You already guessed that!")
-				if (repeatAlert === false) {
-					repeatLetterAlertBox = document.createElement("div")
-					repeatLetterAlertBox.setAttribute("id", "repeat-letter-alert")
+				alert("You already guessed that!")
+				//IN GAME ALERT:
+				// if (repeatAlert === false) {
+				// 	repeatLetterAlertBox = document.createElement("div")
+				// 	repeatLetterAlertBox.setAttribute("id", "repeat-letter-alert")
 
-					repeatLetterAlertText = document.createTextNode("You already guessed that!")
-					repeatLetterAlertBox.appendChild(repeatLetterAlertText);
+				// 	repeatLetterAlertText = document.createTextNode("You already guessed that!")
+				// 	repeatLetterAlertBox.appendChild(repeatLetterAlertText);
 					
-					putBeforeDiv = document.getElementById("putBefore");
-					guessContainer.insertBefore(repeatLetterAlertBox, putBeforeDiv);
-					repeatAlert = true;
-				}
+				// 	putBeforeDiv = document.getElementById("putBefore");
+				// 	guessContainer.insertBefore(repeatLetterAlertBox, putBeforeDiv);
+				// 	repeatAlert = true;
+				// }
 					
 				input.value='';
 				return;
@@ -171,13 +237,12 @@ function checkGuess() {
 		}
 	}
 
-	if (repeatAlert === true) {
-		$(repeatLetterAlertBox).remove();
-		repeatAlert = false;
-	}
+	//IN GAME REPEAT ALERT, removes if guess is not repeat.
+	// if (repeatAlert === true) {
+	// 	$(repeatLetterAlertBox).remove();
+	// 	repeatAlert = false;
+	// }
 
-	// console.log("OUTPUT: " + eachWordArray);
-	// console.log("guess: " + input.value)
 	goodGuess = false
 	
 	guessedLetters.push(input.value)
