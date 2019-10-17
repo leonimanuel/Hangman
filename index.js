@@ -1,85 +1,3 @@
-let allTopics = {
-	geography: {
-		stateCapitals: [
-			"Montgomery", 
-			"Juneau", 
-			"Pheonix", 
-			"Sacramento", 
-			"Denver", 
-			"Tallahassee", 
-			"Atlanta", 
-			"Springfield", 
-			"Honolulu", 
-			"Topeka", 
-			], 
-		 stateMottos: [
-			"the people rule", 
-			"let it be perpetual", 
-			"by valor and arms", 
-			]
-	},  
-	animals: {
-		birds: [
-			"nightnigale", 
-			"robin", 
-			"bluejay"
-			], 
-		fish: [
-			"salmon", 
-			"trout", 
-			"tuna", 
-			]
-	}
-}
-
-
-let myArray = [
-	"banana", 
-	"envelope", 
-	"piano", 
-	"bandersnatch", 
-	"ПОБЕДА"
-	]
-
-let geography = [
-	"stateCapitals", 
-	"stateMottos"]
-
-let stateCapitals = [
-	"Montgomery", 
-	"Juneau", 
-	"Pheonix", 
-	"Sacramento", 
-	"Denver", 
-	"Tallahassee", 
-	"Atlanta", 
-	"Springfield", 
-	"Honolulu", 
-	"Topeka", 
-	];
-
-
-let stateMottos = [
-	"the people rule", 
-	"let it be perpetual", 
-	"by valor and arms", 
-	]
-
-let animals = [
-	"birds", 
-	"fish"
-	]
-
-let birds = [
-	"nightnigale", 
-	"robin", 
-	"bluejay"]
-
-let fish = [
-	"salmon", 
-	"trout", 
-	"tuna", ]
-
 
 
 // let topicArray = Object.keys(allTopics)
@@ -326,8 +244,6 @@ let collectionDisplay = false
 let currentTopic
 let hasRunOnce  = false
 function showCollections (event, topic) {
-	
-
 	console.log(topic)
 	console.log(currentTopic)
 	if (collectionDisplay === true && topic === currentTopic) {
@@ -337,18 +253,7 @@ function showCollections (event, topic) {
 	} else if (topic !== currentTopic && hasRunOnce === true) {
 		$(allCollectionsDiv).remove();
 	}
-		
 
-
-	
-	
-	// if (currentTopic === topic)
-	// 	return;
-	// console.log(topic); //["stateCapitals", "stateMottos"]
-	// console.log(topic[0]); //stateCapitals
-	// console.log(topic[1]); //stateMottos
-	// console.log(topic.length); //2
-	// console.log(event.target.id); //geography-topic
 	
 	currentTopic = topic;
 	allCollectionsDiv = document.createElement("div")
@@ -371,97 +276,8 @@ function showCollections (event, topic) {
 
 		collectionDisplay = true;
 		hasRunOnce = true;
-		// $(topicCollectionDiv).insertAfter(topicContainer);
-		
-		//now I'm trying to link the new text div to an onlick which
-		// topicDiv.appendChild(topicCollectionDiv);
-
-
-		// $(`#${event.target.id}`).append(`<div>${topic[i]}</div>`);
-		// $(`<div>${topic[i]}</div>`).attr("class", `RED`);
-		
-		// ${topic}-colletion
 	}
 }
 
-	// for (let i = 0; i < topic.length; i++) {
-		
-	// 	topic[i] = document.createElement("div");
-	// 	topic = event.target.id
-	// 	// console.log(topic)
-	// 	// topic.appendChild(topic[i]);
-	// }
-
-	//Basically, when you click on Geography, it creates the collections.
-	// stateCapitals = document.createElement("div");
-	// stateCapitalsText = document.createTextNode("stateCapitals");
-	// stateCapitals.appendChild(stateCapitalsText);
-	// geographyTopic = document.getElementById("geography-topic");
-	// geographyTopic.appendChild(cityScape);
-	// $(stateCapitals).attr({"class": "geography-collection", "id": "state-capitals"});
-	// $("#geography-topic").append(stateCapitals)
-	
-	// $("#geography-topic").append("<div>State Mottos</div>").attr({"class": "geography-collection", "id": "state-mottos"});
 
 
-
-// onSubmitRegister = () => {
-// 	let name = (document.getElementById("namefield").value);
-// 	let email = (document.getElementById("emailfield").value);
-
-// 	fetch("http://localhost:3000/register", {
-// 		method: 'post',
-// 		headers: {"Content-Type": "application/json"},
-// 		body: JSON.stringify({
-// 			name: name,
-// 			email: email,
-			
-// 		})
-// 	}) //by default, fetch does GET.
-// 		.then(response => response.json())
-// 		// .then(user => {
-// 		// 	if (user.id) { //to make sure that user has an id
-// 		// 		console.log(user)
-// 		// 		this.props.loadUser(user) //loading the user
-// 		// 		this.props.onRouteChange('home'); //changing the route
-// 		// 	}
-// 		// })
-// }
-
-
-// console.log(red);
-
-
-
-
-// document.body.onload = createNewGame;
-
-
-// function createNewGame () {
-// 	// for (let i = 0; i < output.length; i++)
-// 	var letterBox = document.createElement('div');
-// 	var boxLetter = document.createTextNode("Red")
-// 	// entry.appendChild(document.createTextNode("Hi"));
-// }
-
-// var currentDiv = document.getElementById("div1"); 
-//   document.body.insertBefore(letterBox, currentDiv)
-
-
-// createNewGame();
-
-
-
-
-
-
-
-// var list = document.getElementById('demo');
-
-// function changeText2() {
-//     var firstname = document.getElementById('firstname').value;
-//     document.getElementById('boldStuff2').innerHTML = firstname;
-//     var entry = document.createElement('li');
-//     entry.appendChild(document.createTextNode(firstname));
-//     list.appendChild(entry);
-// }
