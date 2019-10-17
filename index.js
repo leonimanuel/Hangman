@@ -132,7 +132,7 @@ let input = document.getElementById("GuessInput")
 // console.log(output)
 
 let badGuesses = 0
-let goodGuess = false
+let goodGuess = false //Is this necessary at all?
 
 let bodyParts = [
 	"torso", 
@@ -143,24 +143,38 @@ let bodyParts = [
 	]
 
 
-
+let guesses = 0
+let guessedLetters = []
 function checkGuess() {
-	console.log("OUTPUT: " + eachWordArray);
-	console.log("guess: " + input.value)
+	console.log("number of guesses: " + guesses)
+	if (guesses !== 0) {
+		for (let i = 0; i < guesses; i++) {
+			console.log("guessed letters: " + guessedLetters)
+			if (input.value === guessedLetters[i]) {
+				console.log("You already guessed that!")
+				input.value='';
+				return;
+			}
+		}
+	}
+
+	// console.log("OUTPUT: " + eachWordArray);
+	// console.log("guess: " + input.value)
 	goodGuess = false
 	
+	guessedLetters.push(input.value)
+
 	let j = 0;
 	let z = 0
 	eachWordArray.forEach(checkIfRight) //there's gotta be a more to-the-point way of doing this.
-	
 	function checkIfRight () {
 		for (let i = 0; i < eachWordArray[j].length; i++) {
 			if (input.value === eachWordArray[j][i]) {
 				NumLetterDiv = document.getElementById("letterBox" + z);
 				NumLetterDiv.setAttribute("class", "letterBox black");
 				// $("NumLetterDiv").css("color", "red");
-				console.log(NumLetterDiv);
-				console.log("NICE")
+				// console.log(NumLetterDiv);
+				// console.log("NICE")
 				goodGuess = true //fix this idiot
 			}
 			z++;
@@ -168,12 +182,12 @@ function checkGuess() {
 		j++;
 
 	}
-	
 
 	if (goodGuess === true) {
 		guessBox = document.createElement("div")
 		guessBox.setAttribute("class", "guessBox goodguess")	
 		guessLetter = document.createTextNode(input.value);
+
 		guessBox.appendChild(guessLetter);
 
 		guessContainer = document.getElementById("guessed-letter-container"); 
@@ -211,7 +225,11 @@ function checkGuess() {
 		}		
 	}
 	input.value='';
+	guesses++
 }
+
+
+
 
 function changeColor () {
 	$("#collections-title").addClass("change-collections-title-color");

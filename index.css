@@ -170,10 +170,6 @@ body {
 	transition: 1s ease;
 }
 
-.letterBox:hover {
-	line-height: 90px;
-}
-
 #GuessWrapper {
 	margin-top: 10px;
 	color: transparent;
