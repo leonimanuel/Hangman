@@ -27,8 +27,10 @@ body {
 	color: red;
 }
 
-.collection-group {
+.topic {
 	display: inline-block;
+	margin: 0px 20px;
+	font-size: 1.5em;
 }
 
 .collections {
@@ -36,22 +38,10 @@ body {
 	margin: 0px 10px;
 }
 
-#geography-collection-box {
-	border: 2px solid purple;
-	/*height: 0px;*/
+#collectionsBox {
+	/*border: 2px solid blue;*/
+	transition: 0.5s ease;
 }
-
-.geography-collection {
-	border: 2px solid green;
-	height: 0px;
-	color: black;
-	transition: 0.5s linear;
-	/*overflow: hidden;*/
-}
-
-/*.display {
-	height: 20px;
-}*/
 
 .gallow-stand {
 	/*border: 1px solid gold;*/

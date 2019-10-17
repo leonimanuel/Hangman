@@ -17,31 +17,19 @@
 	<br>
 	<div id="collections-container">
 		<div id="collections-title" onclick="changeColor()">Collections:</div>
-		<div id="collection-group-box">
-			<div class="collections collection-group" id="random-words" onclick="loadNewGame(wordList)">Random</div>
-			<div class="collection-group" onclick="showCollections(geography)">Geography</div>
-		</div>
-		
-		<div id="geography-collection-box">
-			<div class="collections geography-collection display" id="state-capitals" onclick="loadNewGame(stateCapitals)" >State Capitals</div>
-		<div class="collections geography-collection display" id="state-capitals" onclick="loadNewGame(stateMottos)" >State Mottos</div>
+		<div id="collection-topic-box">
+			<div class="topic" id="random-words" onclick="loadNewGame(wordList)">Random</div>
+			<div class="topic" id="geography-topic-box" onclick="showCollections(event, geography)">Geography</div>
+			<div class="topic" id="animals-topic-box" onclick="showCollections(event, animals)">Animals</div>
 		</div>
 	</div>
-
-<!-- 	<div>Name: <input type="text" name="name" id="namefield"></div>
-	<div>Email: <input type="text" name="name" id="emailfield"></div>
-	<div><input id="SubmitButton" type="submit" value="submit" onclick="onSubmitRegister()" ></div> -->
 	<div id="gallows">
 		<div class="gallow-stand" id="gallow-pole"></div>
 		<div class="gallow-stand" id="gallow-mast"></div>
 		<div class="gallow-stand" id="gallow-rope"></div>
 		<div id="prisonerDiv">
 			<div class="prisoner" id="head"></div>
-<!-- 			<div class="prisoner" id="torso"></div>
-			<div class="prisoner" id="left-arm"></div>
-			<div class="prisoner" id="right-arm"></div>
-			<div class="prisoner" id="left-leg"></div>
-			<div class="prisoner" id="right-leg"></div> -->
+
 		</div>
 		<div id="guessed-letter-container">
 			<div id="guesses">Guesses:</div>
@@ -58,13 +46,3 @@
 	<script type="text/javascript" src="index.js"></script>
 </body>
 </html>
-
-
-<!-- 	First name:
-	<input type="text" id="firstname">
-	<br>
-	<p>Your first name is: <b id='boldStuff2'></b> 
-	</p>
-	<p>Other people's names:</p>
-	<ol id="demo"></ol>
-	<input type='button' onclick='changeText2()' value='Submit' /> -->

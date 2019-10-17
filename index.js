@@ -7,6 +7,10 @@ let myArray = [
 	"ПОБЕДА"
 	]
 
+let geography = [
+	"stateCapitals", 
+	"stateMottos"]
+
 let stateCapitals = [
 	"Montgomery", 
 	"Juneau", 
@@ -20,15 +24,34 @@ let stateCapitals = [
 	"Topeka", 
 	];
 
+
 let stateMottos = [
 	"the people rule", 
 	"let it be perpetual", 
 	"by valor and arms", 
 	]
 
+let animals = [
+	"birds", 
+	"fish"
+	]
+
+let birds = [
+	"nightnigale", 
+	"robin", 
+	"bluejay"]
+
+let fish = [
+	"salmon", 
+	"trout", 
+	"tuna", ]
 
 let collectionState = wordList
 let q = 0
+
+function changeCollectionState(collection) {
+	collectionState = collection
+}
 
 
 function loadNewGame (collection) {
@@ -118,9 +141,7 @@ let bodyParts = [
 	"right-leg", 
 	]
 
-function changeCollectionState(collection) {
-	collectionState = collection
-}
+
 
 function checkGuess() {
 	console.log("OUTPUT: " + eachWordArray);
@@ -191,13 +212,93 @@ function checkGuess() {
 	input.value='';
 }
 
-function showCollections (input) {
-
-}
-
 function changeColor () {
 	$("#collections-title").addClass("change-collections-title-color");
 }
+
+
+let collectionDisplay = false
+let currentTopic
+let hasRunOnce  = false
+function showCollections (event, topic) {
+	
+
+	console.log(topic)
+	console.log(currentTopic)
+	if (collectionDisplay === true && topic === currentTopic) {
+		$(allCollectionsDiv).remove();
+		collectionDisplay = false
+		return;
+	} else if (topic !== currentTopic && hasRunOnce === true) {
+		$(allCollectionsDiv).remove();
+	}
+		
+
+
+	
+	
+	// if (currentTopic === topic)
+	// 	return;
+	// console.log(topic); //["stateCapitals", "stateMottos"]
+	// console.log(topic[0]); //stateCapitals
+	// console.log(topic[1]); //stateMottos
+	// console.log(topic.length); //2
+	// console.log(event.target.id); //geography-topic
+	
+	currentTopic = topic;
+	allCollectionsDiv = document.createElement("div")
+	allCollectionsDiv.setAttribute("id", "collectionsBox")
+	topicContainer = document.getElementById("collection-topic-box")
+	$(allCollectionsDiv).insertAfter(topicContainer);
+	
+	for (let i = 0; i < topic.length; i++) {
+		topicCollectionDiv = document.createElement("div");
+		topicCollectionText = document.createTextNode(`${topic[i]}`);
+		topicCollectionDiv.appendChild(topicCollectionText);
+		
+		topicCollectionDiv.setAttribute("class", `collections ${event.target.id}-collection`);
+		topicCollectionDiv.setAttribute("id", `${topic[i]}`)
+		topicCollectionDiv.setAttribute("onclick", `loadNewGame(${topic[i]})`)
+
+
+		topicDiv = document.getElementById(`${event.target.id}`);
+		(allCollectionsDiv).appendChild(topicCollectionDiv);
+
+		collectionDisplay = true;
+		hasRunOnce = true;
+		// $(topicCollectionDiv).insertAfter(topicContainer);
+		
+		//now I'm trying to link the new text div to an onlick which
+		// topicDiv.appendChild(topicCollectionDiv);
+
+
+		// $(`#${event.target.id}`).append(`<div>${topic[i]}</div>`);
+		// $(`<div>${topic[i]}</div>`).attr("class", `RED`);
+		
+		// ${topic}-colletion
+	}
+}
+
+	// for (let i = 0; i < topic.length; i++) {
+		
+	// 	topic[i] = document.createElement("div");
+	// 	topic = event.target.id
+	// 	// console.log(topic)
+	// 	// topic.appendChild(topic[i]);
+	// }
+
+	//Basically, when you click on Geography, it creates the collections.
+	// stateCapitals = document.createElement("div");
+	// stateCapitalsText = document.createTextNode("stateCapitals");
+	// stateCapitals.appendChild(stateCapitalsText);
+	// geographyTopic = document.getElementById("geography-topic");
+	// geographyTopic.appendChild(cityScape);
+	// $(stateCapitals).attr({"class": "geography-collection", "id": "state-capitals"});
+	// $("#geography-topic").append(stateCapitals)
+	
+	// $("#geography-topic").append("<div>State Mottos</div>").attr({"class": "geography-collection", "id": "state-mottos"});
+
+
 
 // onSubmitRegister = () => {
 // 	let name = (document.getElementById("namefield").value);
