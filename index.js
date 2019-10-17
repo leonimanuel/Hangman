@@ -55,6 +55,7 @@ function changeCollectionState(collection) {
 
 
 function loadNewGame (collection) {
+	badGuesses = 0
 	collectionState = collection
 	// collectionState = stateMottos
 	let randomPhrase = collectionState[Math.floor(Math.random()*collection.length)];
