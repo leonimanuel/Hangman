@@ -145,6 +145,7 @@ let bodyParts = [
 
 let guesses = 0
 let guessedLetters = []
+let repeatAlert = false
 function checkGuess() {
 	console.log("number of guesses: " + guesses)
 	if (guesses !== 0) {
@@ -152,10 +153,27 @@ function checkGuess() {
 			console.log("guessed letters: " + guessedLetters)
 			if (input.value === guessedLetters[i]) {
 				console.log("You already guessed that!")
+				if (repeatAlert === false) {
+					repeatLetterAlertBox = document.createElement("div")
+					repeatLetterAlertBox.setAttribute("id", "repeat-letter-alert")
+
+					repeatLetterAlertText = document.createTextNode("You already guessed that!")
+					repeatLetterAlertBox.appendChild(repeatLetterAlertText);
+					
+					putBeforeDiv = document.getElementById("putBefore");
+					guessContainer.insertBefore(repeatLetterAlertBox, putBeforeDiv);
+					repeatAlert = true;
+				}
+					
 				input.value='';
 				return;
 			}
 		}
+	}
+
+	if (repeatAlert === true) {
+		$(repeatLetterAlertBox).remove();
+		repeatAlert = false;
 	}
 
 	// console.log("OUTPUT: " + eachWordArray);
@@ -191,8 +209,8 @@ function checkGuess() {
 		guessBox.appendChild(guessLetter);
 
 		guessContainer = document.getElementById("guessed-letter-container"); 
-		var currentDiv2 = document.getElementById("putBefore"); 
-		guessContainer.insertBefore(guessBox, currentDiv2); 
+		putBeforeDiv = document.getElementById("putBefore"); 
+		guessContainer.insertBefore(guessBox, putBeforeDiv); 
 	}
 
 	if (goodGuess === false) {
