@@ -212,7 +212,10 @@ let guesses = 0
 let guessedLetters = []
 let repeatAlert = false
 function checkGuess() {
-	console.log("number of guesses: " + guesses)
+	if (input.value === '') {
+		return alert("You have to try a letter!")
+	} 
+
 	if (guesses !== 0) {
 		for (let i = 0; i < guesses; i++) {
 			console.log("guessed letters: " + guessedLetters)
