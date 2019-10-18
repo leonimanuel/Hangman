@@ -4,7 +4,7 @@
 	<script src="./node_modules/random-words/index.js"></script>
 	<script type="text/javascript" src="PhraseList.js"></script>
 	<script src="./node_modules/jquery/dist/jquery.js"></script>
-	
+
 	<link rel="stylesheet" type="text/css" href="index.css">
 	<link href="https://fonts.googleapis.com/css?family=Rye&display=swap" rel="stylesheet">
 	<title>HANGMAN</title>
@@ -18,11 +18,11 @@
 	<button onclick="loadNewGame(collectionState)">New Game</button>
 	<br>
 	<div id="collections-container">
-		<div id="collections-title" onclick="changeColor()">Collections:</div>
+		<div id="collections-title" onclick="changeColor()">Pick Your Poison:</div>
 		<div id="collection-topic-box">
 			<div class="topic" id="random-words" onclick="loadNewGame(allTopics)">Random</div>
-			<div class="topic" id="geography-topic-box" onclick="showCollections(event, geography)">Geography</div>
-			<div class="topic" id="animals-topic-box" onclick="showCollections(event, animals)">Animals</div>
+			<div class="topic" id="geography-topic-box" onclick="showCollections(event, 'geography')"">Geography</div>
+			<div class="topic" id="animals-topic-box" onclick="showCollections(event, 'animals')">Animals</div>
 		</div>
 	</div>
 	<div id="gallows">
@@ -40,11 +40,11 @@
 	</div>
 	
 	<div id="GuessWrapper">
-			<input id="GuessInput" type="text" name="LetterGuess" autocomplete="off"> <!-- onkeyup="this.value = this.value.toUpperCase();" --><!-- onkeyup="checkGuess()" -->
+			<input id="GuessInput" type="text" name="LetterGuess" autocomplete="off" onkeyup="checkGuess()"> <!-- onkeyup="this.value = this.value.toUpperCase();" --><!-- onkeyup="checkGuess()" -->
 			<input id="SubmitButton" type="submit" value="submit" onclick="checkGuess()" >
 	</div>
 
-
+	<!-- <img src="executioner.png"> -->
 	<script type="text/javascript" src="index.js"></script>
 </body>
 </html>

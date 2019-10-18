@@ -12,25 +12,32 @@
 // let random = randomizedPhrase
 // console.log(random[Math.floor(Math.random()*random.length)])
 
+const topicArray = Object.keys(allTopics)
+// console.log(topicArray)
 
 let collectionState = wordList
 let q = 0
 
-function changeCollectionState(collection) {
-	collectionState = collection
-}
+// function changeCollectionState(collection) {
+// 	collectionState = collection
+// }
 
 let lettersLeft = 0
+let currentTopic
 
 function loadNewGame (collection) {
+	// console.log(currentTopic)
+	// console.log(collection)
+
 	lettersLeft = 0
 	badGuesses = 0
 	collectionState = collection
-	console.log(collectionState)
+	// console.log(collectionState)
 
 	let randomPhrase
+	
+	//IF YOU CLICKED RANDOM
 	if (collectionState === allTopics) {
-		let topicArray = Object.keys(allTopics)
 		let randomizedTopic = topicArray[Math.floor(Math.random()*topicArray.length)]
 
 		let collectionArray = Object.keys(allTopics[randomizedTopic])
@@ -38,16 +45,21 @@ function loadNewGame (collection) {
 
 		let randomizedPhrase = allTopics[randomizedTopic][randomizedCollection]
 			[Math.floor(Math.random()*allTopics[randomizedTopic][randomizedCollection].length)]
-			console.log(randomizedPhrase)
+			// console.log(randomizedPhrase)
 		randomPhrase = randomizedPhrase
 	} else {
-		randomPhrase = collectionState[Math.floor(Math.random()*collectionState.length)];
+		// console.log(currentTopic)
+		randomPhrase = allTopics[currentTopic][collectionState]
+		[Math.floor(Math.random()*allTopics[currentTopic][collectionState].length)];
 	}
-	
-	
+	// console.log("collectionState: " + collectionState)
+	// console.log("stateCapitals: " + stateCapitals)
+	// console.log("randomPhrase: " + randomPhrase)
+
 
 	eachWordArray = randomPhrase.split(' ');
-	console.log("eachWordArray: " + eachWordArray.length)
+	// console.log("eachWordArray: " + eachWordArray)
+	// console.log("eachWordArray length: " + eachWordArray.length)
 
 
 	let eachLetterArray = [];
@@ -57,7 +69,7 @@ function loadNewGame (collection) {
 
 	}
 
-	console.log(eachLetterArray)
+	// console.log(eachLetterArray)
 	// console.log(collectionState)
 	// console.log(output)
 	// currentCollectionDiv = document.getElementById(" ")
@@ -75,7 +87,7 @@ function loadNewGame (collection) {
 	}
 
 	q++;
-	console.log(q);
+	// console.log(q);
 
 	let j = 0
 	let z = 0
@@ -108,10 +120,10 @@ function loadNewGame (collection) {
 			z++;
 			lettersLeft++;
 		} 
-		console.log("letters left: " + lettersLeft)
+		// console.log("letters left: " + lettersLeft)
 		j++;
 	}
-	
+	console.log("phrase: " + randomPhrase)
 }	
 
 
@@ -249,20 +261,26 @@ function checkGuess() {
 	guesses++
 }
 
-
-
-
-function changeColor () {
-	$("#collections-title").addClass("change-collections-title-color");
-}
-
-
 let collectionDisplay = false
-let currentTopic
 let hasRunOnce  = false
 function showCollections (event, topic) {
-	console.log(topic)
-	console.log(currentTopic)
+	// topic = `${topic}`
+	console.log("topic: " + topic)
+	for (let i = 0; i < topicArray.length; i++) {
+		// console.log(topicArray[i])
+		if (topic === topicArray[i]) {
+			topic = topicArray[i]
+			currentTopic = topic
+			// console.log("topic = topicArray!![i]")
+			break;
+		} 
+		// else {
+		// 	return alert("something went wrong!")
+		// }
+	}
+
+	collectionArray = Object.keys(allTopics[topic])
+	// console.log("collectionArray length: " + collectionArray.length)
 	if (collectionDisplay === true && topic === currentTopic) {
 		$(allCollectionsDiv).remove();
 		collectionDisplay = false
@@ -278,14 +296,17 @@ function showCollections (event, topic) {
 	topicContainer = document.getElementById("collection-topic-box")
 	$(allCollectionsDiv).insertAfter(topicContainer);
 	
-	for (let i = 0; i < topic.length; i++) {
+	for (let i = 0; i < collectionArray.length; i++) {
+		// console.log(i);
+		// console.log("collectionArray[i]: " + collectionArray[i]);
+		
 		topicCollectionDiv = document.createElement("div");
-		topicCollectionText = document.createTextNode(`${topic[i]}`);
+		topicCollectionText = document.createTextNode(`${collectionArray[i]}`);
 		topicCollectionDiv.appendChild(topicCollectionText);
 		
 		topicCollectionDiv.setAttribute("class", `collections ${event.target.id}-collection`);
-		topicCollectionDiv.setAttribute("id", `${topic[i]}`)
-		topicCollectionDiv.setAttribute("onclick", `loadNewGame(${topic[i]})`)
+		topicCollectionDiv.setAttribute("id", `${collectionArray[i]}-id`)
+		topicCollectionDiv.setAttribute("onclick", `loadNewGame('${collectionArray[i]}')`)
 
 
 		topicDiv = document.getElementById(`${event.target.id}`);
@@ -294,7 +315,8 @@ function showCollections (event, topic) {
 		collectionDisplay = true;
 		hasRunOnce = true;
 	}
+	// console.log("topic: " + topic)
 }
 
-
+// currentTopic = topic;
 
