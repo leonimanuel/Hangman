@@ -20,7 +20,10 @@ function changeCollectionState(collection) {
 	collectionState = collection
 }
 
+let lettersLeft = 0
+
 function loadNewGame (collection) {
+	lettersLeft = 0
 	badGuesses = 0
 	collectionState = collection
 	console.log(collectionState)
@@ -44,7 +47,8 @@ function loadNewGame (collection) {
 	
 
 	eachWordArray = randomPhrase.split(' ');
-	console.log("eachWordArray: " + eachWordArray)
+	console.log("eachWordArray: " + eachWordArray.length)
+
 
 	let eachLetterArray = [];
 	
@@ -52,6 +56,7 @@ function loadNewGame (collection) {
 		eachLetterArray[i] = eachWordArray[i].split('');
 
 	}
+
 	console.log(eachLetterArray)
 	// console.log(collectionState)
 	// console.log(output)
@@ -101,11 +106,14 @@ function loadNewGame (collection) {
 			// document.body.wordDiv.insertBefore(letterDiv, currentDiv2); 
 			i++;
 			z++;
+			lettersLeft++;
 		} 
+		console.log("letters left: " + lettersLeft)
 		j++;
 	}
 	
 }	
+
 
 // loadNewGame ();
 
@@ -180,6 +188,9 @@ function checkGuess() {
 				// console.log(NumLetterDiv);
 				// console.log("NICE")
 				goodGuess = true //fix this idiot
+				--lettersLeft
+				console.log("letters left: " + lettersLeft)
+
 			}
 			z++;
 		}
@@ -226,8 +237,14 @@ function checkGuess() {
 			// console.log(lostLetter);
 			// lostLetter.setAttribute("class", "letterBox show-lost-letter")
 
-		}		
+		}	
 	}
+
+	if (lettersLeft === 0) {
+			$(".letterBox").attr("style", "color: green")
+			console.log("YOU WON!!")
+		}	
+
 	input.value='';
 	guesses++
 }
