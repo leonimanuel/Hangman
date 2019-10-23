@@ -51,11 +51,11 @@ function loadNewGame (collection) {
 		let randomizedPhrase = allTopics[randomizedTopic][randomizedCollection]
 			[Math.floor(Math.random()*allTopics[randomizedTopic][randomizedCollection].length)]
 			// console.log(randomizedPhrase)
-		randomPhrase = randomizedPhrase
+		randomPhrase = randomizedPhrase.toLowerCase();
 	} else {
 		// console.log(currentTopic)
 		randomPhrase = allTopics[currentTopic][collectionState]
-		[Math.floor(Math.random()*allTopics[currentTopic][collectionState].length)];
+		[Math.floor(Math.random()*allTopics[currentTopic][collectionState].length)].toLowerCase();;
 	}
 	// console.log("collectionState: " + collectionState)
 	// console.log("stateCapitals: " + stateCapitals)
