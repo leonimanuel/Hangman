@@ -62,7 +62,7 @@ function loadNewGame (collection) {
 			selectedTopic.setAttribute("style", "color: black")
 		}
 		selectedTopic = document.getElementById(event.target.id)
-		console.log(selectedTopic)
+		// console.log(selectedTopic)
 		selectedTopic.setAttribute("style", "color: purple")
 		topicHighlighted = true
 		//END
@@ -128,9 +128,6 @@ function loadNewGame (collection) {
 	// console.log(collectionState)
 	// console.log(output)
 	// currentCollectionDiv = document.getElementById(" ")
-
-
-
 	q++;
 	// console.log(q);
 
@@ -209,7 +206,7 @@ function checkGuess() {
 		for (let i = 0; i < guesses; i++) {
 			console.log("guessed letters: " + guessedLetters)
 			if (input.value === guessedLetters[i]) {
-				alert("You already guessed that!")
+				// alert("You already guessed that!")
 				//IN GAME ALERT:
 				// if (repeatAlert === false) {
 				// 	repeatLetterAlertBox = document.createElement("div")
