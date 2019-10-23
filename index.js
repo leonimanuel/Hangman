@@ -25,6 +25,8 @@ let q = 0
 let lettersLeft = 0
 let currentTopic
 
+hangmanGridColumn = 15
+hangmanGridRow = 6
 function loadNewGame (collection) {
 	// console.log(currentTopic)
 	// console.log(collection)
@@ -223,10 +225,9 @@ function checkGuess() {
 	}
 
 	if (goodGuess === false) {
-		prisonerPart = document.createElement("div");
-		prisonerPart.setAttribute("class", "prisoner-body")
-		prisonerPart.setAttribute("id", bodyParts[badGuesses])
-		document.getElementById("prisonerDiv").appendChild(prisonerPart)
+		// $("#hangman-picture").css({'grid-column' : '14', 'grid-row' : '5'});
+		$("#hangman-picture").css({'grid-column' : (hangmanGridColumn-- - 1), 
+			'grid-row' : (hangmanGridRow-- - 1)});
 
 		badGuesses++;
 		console.log("BAD GUESSES: " + badGuesses);
