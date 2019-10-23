@@ -27,6 +27,9 @@ let currentTopic
 
 hangmanGridColumn = 15
 hangmanGridRow = 6
+hangmanStep = 0
+
+
 function loadNewGame (collection) {
 	// console.log(currentTopic)
 	// console.log(collection)
@@ -96,10 +99,16 @@ function loadNewGame (collection) {
 	eachWordArray.forEach(createLetterBox)
 	
 	function createLetterBox () {
+		phraseDiv = document.getElementById("phrase-box")
+		// phraseDiv = document.createElement("div");
+		// phraseDiv.setAttribute("id", "phrase-box")
+		// currentDiv = document.getElementById("GuessWrapper")
+		// document.body.insertBefore(phraseDiv, currentDiv);
+
 		wordDiv = document.createElement("div");
 		wordDiv.setAttribute("class", "wordBox")
-		var currentDiv = document.getElementById("GuessWrapper"); 
-		document.body.insertBefore(wordDiv, currentDiv); 
+		phraseDiv.appendChild(wordDiv);
+		
 
 		let i = 0;
 		while (i < eachWordArray[j].length) {
@@ -228,6 +237,9 @@ function checkGuess() {
 		// $("#hangman-picture").css({'grid-column' : '14', 'grid-row' : '5'});
 		$("#hangman-picture").css({'grid-column' : (hangmanGridColumn-- - 1), 
 			'grid-row' : (hangmanGridRow-- - 1)});
+		// $("#hangman-picture").removeClass("step0").addClass('step' + ++hangmanStep)
+		// $("#hangman-picture").attr('class:', 'step' + ++hangmanStep);
+
 
 		badGuesses++;
 		console.log("BAD GUESSES: " + badGuesses);
