@@ -39,12 +39,22 @@ let q = 0
 let lettersLeft = 0
 let currentTopic
 
-hangmanGridColumn = 15
-hangmanGridRow = 6
+let hangmanGridColumn = 15
+let hangmanGridRow = 6
 hangmanStep = 0
+
+// let allCollectionsDiv = document.createElement("div")
+// allCollectionsDiv.setAttribute("id", "collectionsBox")
+// allCollectionsDiv.setAttribute("style", "height: 30px")
+
 
 
 function loadNewGame (collection) {
+	hangmanGridColumn = 15
+	hangmanGridRow = 6
+
+	$("#hangman-picture").css({'grid-column' : hangmanGridColumn, 
+			'grid-row' : hangmanGridRow});
 	// console.log(currentTopic)
 	// console.log(collection)
 
@@ -309,17 +319,20 @@ function showCollections (event, topic) {
 	collectionArray = Object.keys(allTopics[topic])
 	// console.log("collectionArray length: " + collectionArray.length)
 	if (collectionDisplay === true && topic === currentTopic) {
-		$(allCollectionsDiv).remove();
+		// $(allCollectionsDiv).remove();
+		$(allCollectionsDiv).empty();
 		collectionDisplay = false
 		return;
 	} else if (topic !== currentTopic && hasRunOnce === true) {
-		$(allCollectionsDiv).remove();
+		// $(allCollectionsDiv).remove();
+		$(allCollectionsDiv).empty();
 	}
 
 	
 	currentTopic = topic;
-	allCollectionsDiv = document.createElement("div")
-	allCollectionsDiv.setAttribute("id", "collectionsBox")
+	// allCollectionsDiv = document.createElement("div")
+	// allCollectionsDiv.setAttribute("id", "collectionsBox")
+	allCollectionsDiv = document.getElementById("collections-wrapper")
 	topicContainer = document.getElementById("collection-topic-box")
 	$(allCollectionsDiv).insertAfter(topicContainer);
 	

@@ -15,16 +15,18 @@
 		<div id="lose">You Lose</div>
 		<div id="win">ПОБЕДА</div>
 	</div>
-	<button onclick="loadNewGame(collectionState)">New Game</button>
-	<br>
-	<div id="collections-container">
-		<div id="collections-title" onclick="changeColor()">Pick Your Poison:</div>
-		<div id="collection-topic-box">
+	<!-- <button onclick="loadNewGame(collectionState)">New Game</button>
+	<br> -->
+	<div id="topic-container">
+		<div id="topics-title" onclick="changeColor()">Pick Your Topic:</div>
+		<div id="topic-box">
 			<div class="topic" id="random-words" onclick="loadNewGame(allTopics)">Random</div>
 			<div class="topic" id="geography-topic-box" onclick="showCollections(event, 'geography')"">Geography</div>
 			<div class="topic" id="animals-topic-box" onclick="showCollections(event, 'animals')">Animals</div>
 		</div>
 	</div>
+
+	<div id="collections-wrapper"></div>
 	
 	<div id="gallows-wrapper">
 		<div id="gallows">
