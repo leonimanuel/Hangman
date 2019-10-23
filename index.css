@@ -251,9 +251,14 @@ div {
 #GuessInput {
 	/*color: green;*/
 	font-size: 25px;
-	width: 25px;
+	width: 100px;
 	text-transform: uppercase;
 	/*height: 50px;*/
+	transition: 0.5s ease;
+}
+
+#GuessInput:focus {
+	width: 25px;
 }
 
 .black {
@@ -277,6 +282,10 @@ div {
 	color: transparent;
 }
 
+#SubmitButton {
+	/*visibility: hidden;*/
+	display: none;
+}
 
 
 

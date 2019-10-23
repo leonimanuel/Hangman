@@ -47,9 +47,35 @@ hangmanStep = 0
 // allCollectionsDiv.setAttribute("id", "collectionsBox")
 // allCollectionsDiv.setAttribute("style", "height: 30px")
 
-
+let selectedTopic
+let allCollectionsDiv
 
 function loadNewGame (collection) {
+	if (q !== 0) {
+		$(".wordBox").remove();
+		$(".letterBox").remove();
+		$(".guessBox").remove();
+		$(".prisoner-body").remove();
+
+		//SPECIFICALLY FOR HIGHLIGHTING "RANDOM" BUTTON
+		if (topicHighlighted === true) {
+			selectedTopic.setAttribute("style", "color: black")
+		}
+		selectedTopic = document.getElementById(event.target.id)
+		console.log(selectedTopic)
+		selectedTopic.setAttribute("style", "color: purple")
+		topicHighlighted = true
+		//END
+
+		if (selectedTopic === document.getElementById("random-words")) {
+			$(allCollectionsDiv).empty();
+		}
+
+	}
+
+	console.log()
+	
+
 	hangmanGridColumn = 15
 	hangmanGridRow = 6
 
@@ -103,17 +129,7 @@ function loadNewGame (collection) {
 	// console.log(output)
 	// currentCollectionDiv = document.getElementById(" ")
 
-	if (q !== 0) {
-		$(".wordBox").remove();
-		$(".letterBox").remove();
-		$(".guessBox").remove();
-		$(".prisoner-body").remove();
-		// let previousGame = document.querySelectorAll(".letterBox")
-		// console.log(previousGame);
-		// while(previousGame.length > 0){
-  //      previousGame[0].parentNode.removeChild(previousGame[0]);
-  //   	}
-	}
+
 
 	q++;
 	// console.log(q);
@@ -162,7 +178,7 @@ function loadNewGame (collection) {
 }	
 
 
-// loadNewGame ();
+
 
 
 // let input = document.body;
@@ -298,11 +314,31 @@ function checkGuess() {
 	guesses++
 }
 
+let topicHighlighted = false
 let collectionDisplay = false
 let hasRunOnce  = false
 function showCollections (event, topic) {
+	if (topicHighlighted === true) {
+		selectedTopic.setAttribute("style", "color: black")
+	}
+	selectedTopic = document.getElementById(event.target.id)
+	selectedTopic.setAttribute("style", "color: purple")
+	topicHighlighted = true
+	console.log(selectedTopic)
 	// topic = `${topic}`
 	console.log("topic: " + topic)
+	
+	if (collectionDisplay === true && topic === currentTopic) {
+		// $(allCollectionsDiv).remove();
+		$(allCollectionsDiv).empty();
+		collectionDisplay = false
+		return;
+	} else if (topic !== currentTopic && hasRunOnce === true) {
+		// $(allCollectionsDiv).remove();
+		console.log("HEY BUDDDDDD")
+		$(allCollectionsDiv).empty();
+	}
+
 	for (let i = 0; i < topicArray.length; i++) {
 		// console.log(topicArray[i])
 		if (topic === topicArray[i]) {
@@ -318,15 +354,7 @@ function showCollections (event, topic) {
 
 	collectionArray = Object.keys(allTopics[topic])
 	// console.log("collectionArray length: " + collectionArray.length)
-	if (collectionDisplay === true && topic === currentTopic) {
-		// $(allCollectionsDiv).remove();
-		$(allCollectionsDiv).empty();
-		collectionDisplay = false
-		return;
-	} else if (topic !== currentTopic && hasRunOnce === true) {
-		// $(allCollectionsDiv).remove();
-		$(allCollectionsDiv).empty();
-	}
+	
 
 	
 	currentTopic = topic;
@@ -358,5 +386,5 @@ function showCollections (event, topic) {
 	// console.log("topic: " + topic)
 }
 
-// currentTopic = topic;
+loadNewGame(allTopics)
 
