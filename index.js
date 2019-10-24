@@ -41,6 +41,13 @@ let currentTopic
 
 let hangmanGridColumn = 15
 let hangmanGridRow = 6
+let hangmanPaddingBottom = 0
+let hangmanPaddingRight = 0
+
+let hangmanTranslateHorizontal = 0
+let hangmanTranslateVertical = 0
+
+
 hangmanStep = 0
 
 // let allCollectionsDiv = document.createElement("div")
@@ -51,6 +58,10 @@ let selectedTopic
 let allCollectionsDiv
 
 function loadNewGame (collection) {
+	hangmanTranslateHorizontal = 0
+	hangmanTranslateVertical = 0 
+	$("#hangman-picture").css({'transform' : `translate(${(hangmanTranslateHorizontal)}px, ${(hangmanTranslateVertical)}px)`})
+	guesses = 0;
 	if (q !== 0) {
 		$(".wordBox").remove();
 		$(".letterBox").remove();
@@ -206,7 +217,7 @@ function checkGuess() {
 		for (let i = 0; i < guesses; i++) {
 			console.log("guessed letters: " + guessedLetters)
 			if (input.value === guessedLetters[i]) {
-				// alert("You already guessed that!")
+				alert("You already guessed that!")
 				//IN GAME ALERT:
 				// if (repeatAlert === false) {
 				// 	repeatLetterAlertBox = document.createElement("div")
@@ -272,8 +283,21 @@ function checkGuess() {
 
 	if (goodGuess === false) {
 		// $("#hangman-picture").css({'grid-column' : '14', 'grid-row' : '5'});
-		$("#hangman-picture").css({'grid-column' : (hangmanGridColumn-- - 1), 
-			'grid-row' : (hangmanGridRow-- - 1)});
+		// $("#hangman-picture").css({'grid-column' : (hangmanGridColumn-- - 1), 
+		// 	'grid-row' : (hangmanGridRow-- - 1)});
+		$("#hangman-picture").css({'transform' : `translate(${(hangmanTranslateHorizontal -= 55)}px, ${(hangmanTranslateVertical -= 15)}px)`});
+		// hangmanTranslateHorizontal -= 55
+		// hangmanTranslateVertical -= 15
+		console.log(hangmanTranslateHorizontal, hangmanTranslateVertical)
+
+
+
+		// $("#hangman-picture").css({'padding-bottom' : (hangmanPaddingBottom + 20), 
+		// 	'padding-right' : (hangmanPaddingRight + 40)});
+		// hangmanPaddingBottom += 20;
+		// hangmanPaddingRight += 40;
+
+
 		// $("#hangman-picture").removeClass("step0").addClass('step' + ++hangmanStep)
 		// $("#hangman-picture").attr('class:', 'step' + ++hangmanStep);
 
@@ -315,9 +339,12 @@ let topicHighlighted = false
 let collectionDisplay = false
 let hasRunOnce  = false
 function showCollections (event, topic) {
-	if (topicHighlighted === true) {
+	
+
+	if (topicHighlighted === true) { //DESELECT CHOSEN TOPIC
 		selectedTopic.setAttribute("style", "color: black")
 	}
+	
 	selectedTopic = document.getElementById(event.target.id)
 	selectedTopic.setAttribute("style", "color: purple")
 	topicHighlighted = true

@@ -51,7 +51,9 @@
 	
 	<div id="phrase-box"></div>
 	<div id="GuessWrapper">
-			<input id="GuessInput" placeholder="guess" type="text" name="LetterGuess" autocomplete="off"> <!-- onkeyup="this.value = this.value.toUpperCase();" --><!-- onkeyup="checkGuess()" -->
+			<input id="GuessInput" placeholder="guess" maxlength="1" 
+			onfocus="this.placeholder = ''" onblur="this.placeholder = 'guess'"
+			 type="text" name="LetterGuess" autocomplete="off" style="text-align: center"> <!-- onkeyup="this.value = this.value.toUpperCase();" --><!-- onkeyup="checkGuess()" -->
 			<input id="SubmitButton" type="submit" value="submit" onclick="checkGuess()" >
 	</div>
 

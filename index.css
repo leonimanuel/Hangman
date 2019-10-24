@@ -183,11 +183,12 @@ div {
 }
 
 #guessed-letter-container {
-	width: 20%;
+	/*width: 20%;*/
 	display: inline-block;
 	vertical-align: top;
-	margin-left: 100px;
+	/*margin-left: 100px;*/
 	margin-top: 20px;
+	/*margin: 0 auto;*/
 	/*grid-column: 17/19;*/
 	/*display: flex;*/
 	/*border: 2px solid blue;*/
