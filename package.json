@@ -1,0 +1,20 @@
+{
+  "name": "HTMLHangman",
+  "version": "1.0.0",
+  "description": "",
+  "main": "HtmlHangman.js",
+  "scripts": {
+    "start": "npm run open",
+    "open": "concurrently \"http-server -a localhost -p 3000\" \"open http://localhost:3000/HtmlHangman.html\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^5.0.0",
+    "http-server": "^0.11.1",
+    "jquery": "^3.4.1",
+    "node": "^12.11.1",
+    "random-words": "^1.1.0"
+  }
+}
